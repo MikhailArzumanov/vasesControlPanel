@@ -31,6 +31,9 @@ namespace vaseApi.Data {
                 IsLightingToggled    = false  ,
                 LightingIntensity    = 0      ,
                 GlassOpacity         = 0      ,
+                WateredLevel    = 0,
+                FertilizedLevel = 0,
+                LightingLevel   = 0,
             };
             db.Vases.Add(vase);
             db.SaveChanges();

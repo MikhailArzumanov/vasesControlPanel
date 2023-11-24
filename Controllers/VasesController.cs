@@ -59,16 +59,19 @@ namespace vaseApi.Controllers {
                 .Include(x => x.FlowerGenus).FirstOrDefault(x => x.Id == id);
             if (vase == null) return NotFound(VASE_NOT_FOUND);
             vase.Name = request.Name;
-            vase.WateredLevel   = request.WateredLevel   ;
-            vase.MainColorId    = request.MainColorId    ;
-            vase.SideColorId    = request.SideColorId    ;
-            vase.FlowerGenusId  = request.FlowerGenusId  ;
-            vase.Commentary     = request.Commentary     ;
-            vase.VaseCondition  = request.VaseCondition  ;
-            vase.LastRepairDate = request.LastRepairDate ;
-            vase.MountingDate   = request.MountingDate   ;
-            vase.LastWatering   = request.LastWatering   ;
-            vase.VaseWeight     = request.VaseWeight     ;
+            vase.WateredLevel    = request.WateredLevel   ;
+            vase.FertilizedLevel = request.FertilizedLevel;
+            vase.LightingLevel   = request.LightingLevel  ;
+            vase.MainColorId     = request.MainColorId    ;
+            vase.SideColorId     = request.SideColorId    ;
+            vase.FlowerGenusId   = request.FlowerGenusId  ;
+            vase.Commentary      = request.Commentary     ;
+            vase.VaseCondition   = request.VaseCondition  ;
+            vase.LastRepairDate  = request.LastRepairDate ;
+            vase.MountingDate    = request.MountingDate   ;
+            vase.LastFertilizing = request.LastFertilizing;
+            vase.LastWatering    = request.LastWatering   ;
+            vase.VaseWeight      = request.VaseWeight     ;
 
             SetParameters(vase, request);
 
@@ -98,6 +101,12 @@ namespace vaseApi.Controllers {
             db.Vases.Update(vase);
             db.SaveChanges();
             return Ok(vase);
+        }
+
+        [HttpPut("iterate")]
+        public IActionResult IterateShifts() {
+            VaseModifier.Iterate(db);
+            return Ok();
         }
     }
 }

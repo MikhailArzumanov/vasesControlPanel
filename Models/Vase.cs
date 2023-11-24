@@ -12,12 +12,15 @@ namespace vaseApi.Models {
         Count
     }
     public class Vase {
-        public int       Id { get; set; }
-        public string?   Name { get; set; } = "";
-        public string?   Commentary { get; set; } = "";
-        public DateTime  LastWatering { get; set; }
-        public double    WateredLevel { get; set; }
-        
+        public int       Id              { get; set; }
+        public string?   Name            { get; set; } = "";
+        public string?   Commentary      { get; set; } = "";
+        public DateTime  LastWatering    { get; set; }
+        public double    WateredLevel    { get; set; }
+        public DateTime  LastFertilizing { get; set; }
+        public double    FertilizedLevel { get; set; }
+        public double    LightingLevel   { get; set; }
+
         public bool   Autowatering { get; set; }
         public double WateringIntensity { get; set; }
         public bool   Autofertilizeing { get; set; }
